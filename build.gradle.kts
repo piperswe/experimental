@@ -1,3 +1,8 @@
+import org.gradle.internal.scan.config.BuildScanConfig
+import org.gradle.internal.scan.config.BuildScanPluginMetadata
+import org.jetbrains.kotlin.gradle.report.BuildScanExtensionHolder
+import org.jetbrains.kotlin.gradle.report.BuildScanSettings
+
 plugins {
     id("java")
     id("application")
@@ -75,4 +80,9 @@ javafx {
 
 tasks.getByName<JavaExec>("run") {
     standardInput = System.`in`
+}
+
+extensions.findByName("buildScan")?.withGroovyBuilder {
+    setProperty("termsOfServiceUrl", "https://gradle.com/terms-of-service")
+    setProperty("termsOfServiceAgree", "yes")
 }
