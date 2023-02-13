@@ -7,7 +7,15 @@ plugins {
 
     id("org.openjfx.javafxplugin") version "0.0.13"
     id("org.javamodularity.moduleplugin") version "1.8.12"
+}
 
+buildscript {
+    configurations.classpath {
+        resolutionStrategy.activateDependencyLocking()
+        dependencyLocking {
+            lockMode.set(LockMode.STRICT)
+        }
+    }
 }
 
 group = "me.piperswe"
@@ -48,8 +56,13 @@ dependencies {
     implementation("ch.qos.logback:logback-core:1.4.5")
     implementation("ch.qos.logback:logback-classic:1.4.5")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.8.1")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.2")
+}
+
+dependencyLocking {
+    lockAllConfigurations()
+    lockMode.set(LockMode.STRICT)
 }
 
 tasks.getByName<Test>("test") {
