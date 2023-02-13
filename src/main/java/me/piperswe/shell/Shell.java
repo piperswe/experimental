@@ -3,6 +3,7 @@ package me.piperswe.shell;
 import com.google.common.io.LineReader;
 import lombok.NonNull;
 import me.piperswe.demogui.DemoGUIApplication;
+import me.piperswe.demogui.kotlin.KtDemoApplication;
 import me.piperswe.utils.AbstractVirtualExecutionThreadService;
 
 import java.io.IOException;
@@ -19,6 +20,7 @@ public class Shell extends AbstractVirtualExecutionThreadService {
         commands.put("help", (args) -> System.out.println("me.piperswe:experimental shell"));
         commands.put("echo", (args) -> System.out.println(String.join(" ", args)));
         commands.put("demogui", DemoGUIApplication.getCommand());
+        commands.put("ktdemogui", KtDemoApplication.getCommand());
     }
 
     private boolean isQuote(char ch) {
