@@ -1,14 +1,9 @@
-import org.gradle.internal.scan.config.BuildScanConfig
-import org.gradle.internal.scan.config.BuildScanPluginMetadata
-import org.jetbrains.kotlin.gradle.report.BuildScanExtensionHolder
-import org.jetbrains.kotlin.gradle.report.BuildScanSettings
-
 plugins {
     id("java")
     id("application")
     id("io.freefair.lombok") version "6.6.1"
-    kotlin("jvm") version "1.8.10"
-    kotlin("plugin.lombok") version "1.8.10"
+    kotlin("jvm") version "1.8.0"
+    kotlin("plugin.lombok") version "1.8.0"
 
     id("org.openjfx.javafxplugin") version "0.0.13"
     id("org.javamodularity.moduleplugin") version "1.8.12"
