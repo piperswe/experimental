@@ -1,11 +1,11 @@
 package me.piperswe.utils.gui;
 
 import javafx.application.Platform;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicReference;
@@ -23,10 +23,6 @@ public class StateContainer<State> {
     public StateContainer(State initialState, boolean multithreaded) {
         this.state = new AtomicReference<>(initialState);
         this.multithreaded = multithreaded;
-    }
-
-    public static <State> StateContainer<State> of(@NonNull State initialState) {
-        return new StateContainer<>(initialState);
     }
 
     public static <State> StateContainer<State> singleThreadOf(@NonNull State initialState) {
@@ -64,9 +60,7 @@ public class StateContainer<State> {
             Thread.ofVirtual().name(String.format("%s State Updater", state.get().getClass().getName())).start(() -> {
                 var states = performUpdate(updater);
                 log.debug("queueing interface update job in UI thread");
-                Platform.runLater(() -> {
-                    notifyListeners(states);
-                });
+                Platform.runLater(() -> notifyListeners(states));
             });
         } else {
             notifyListeners(performUpdate(updater));
@@ -75,5 +69,9 @@ public class StateContainer<State> {
 
     public void listen(@NonNull StateListener<State> listener) {
         this.listeners.add(listener);
+    }
+
+    public <T extends Event> EventHandler<T> updateOnEvent(@NonNull UnaryOperator<State> updater) {
+        return (event) -> update(updater);
     }
 }

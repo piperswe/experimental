@@ -1,16 +1,15 @@
 package me.piperswe.demogui;
 
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import lombok.NonNull;
 import me.piperswe.utils.gui.ReactiveComponent;
 import me.piperswe.utils.gui.StateContainer;
 import org.jetbrains.annotations.NotNull;
 
-public class LabelComponent extends ReactiveComponent<DemoGUIState, Integer, Label> {
+public class LabelComponent extends ReactiveComponent<State, Integer> {
     private final Label label = new Label();
 
-    public LabelComponent(@NonNull StateContainer<DemoGUIState> stateContainer) {
+    public LabelComponent(@NonNull StateContainer<State> stateContainer) {
         super(stateContainer);
     }
 
@@ -21,7 +20,7 @@ public class LabelComponent extends ReactiveComponent<DemoGUIState, Integer, Lab
 
     @NotNull
     @Override
-    public Integer select(@NotNull DemoGUIState state) {
+    public Integer select(@NotNull State state) {
         return state.counter();
     }
 
