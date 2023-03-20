@@ -53,7 +53,7 @@ dependencies {
     implementation("com.google.guava:guava:31.1-jre")
     implementation("com.google.code.gson:gson:2.10.1")
 
-    implementation("ch.qos.logback:logback-core:1.4.5")
+    implementation("ch.qos.logback:logback-core:1.4.6")
     implementation("ch.qos.logback:logback-classic:1.4.5")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.2")
