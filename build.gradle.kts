@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("application")
-    id("io.freefair.lombok") version "6.6.1"
+    id("io.freefair.lombok") version "8.0.1"
     kotlin("jvm") version "1.8.0"
     kotlin("plugin.lombok") version "1.8.0"
 
