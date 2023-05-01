@@ -3,7 +3,7 @@ plugins {
     id("application")
     id("io.freefair.lombok") version "6.6.1"
     kotlin("jvm") version "1.8.0"
-    kotlin("plugin.lombok") version "1.8.0"
+    kotlin("plugin.lombok") version "1.8.21"
 
     id("org.openjfx.javafxplugin") version "0.0.13"
     id("org.javamodularity.moduleplugin") version "1.8.12"
